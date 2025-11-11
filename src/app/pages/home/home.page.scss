@@ -1,0 +1,10 @@
+.poster-content{
+  margin: 16px;
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid #555;
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+}

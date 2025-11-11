@@ -1,0 +1,14 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Netflix
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll($event)" [ngStyle]="{'--background': backgroundColor}">
+  <div class="poster-content">
+    <img #posterImage src="assets/img/image.png">
+  </div>
+  <p *ngFor="let item of [].constructor(100); let i = index">Item {{ i }}</p>
+</ion-content>
