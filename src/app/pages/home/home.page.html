@@ -1,14 +1,26 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="ion-no-shadow" [ngStyle]="{'--background': headerBackgroundColor}">
     <ion-title>
       Netflix
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll($event)" [ngStyle]="{'--background': backgroundColor}">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll($event)"
+  [ngStyle]="{'--background': backgroundColor}">
+  <ion-refresher slot="fixed" (ionRefresh)="getMovies($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="poster-content">
-    <img #posterImage src="assets/img/image.png">
+    <img #posterImage crossorigin="anonymous">
   </div>
-  <p *ngFor="let item of [].constructor(100); let i = index">Item {{ i }}</p>
+  <p class="section-title">Agora em cartaz</p>
+  <div class="horinzontal-scroll">
+    @for (movie of movies; track movie.id) {
+    <ion-card button class="movie-card">
+      <ion-img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"></ion-img>
+    </ion-card>
+    }
+    <!--<p *ngFor="let movie of movies; let i = index">{{ movie.title }}</p> -->
+  </div>
 </ion-content>

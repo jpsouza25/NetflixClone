@@ -8,3 +8,29 @@
     object-fit: cover;
   }
 }
+
+.horinzontal-scroll{
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
+  padding-left: 16px;
+}
+
+.section-title {
+  margin: 30px 16px 16px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.movie-card{
+  display: inline-block;
+  margin:0 16px 0 0 ;
+  border-radius: 8px;
+
+  ion-img{
+    height: 180px;
+    width: 120px;
+    background:#333;
+  }
+}
