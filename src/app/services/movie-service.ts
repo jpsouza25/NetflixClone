@@ -7,12 +7,12 @@ import { map, Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
-export class MovieService{
+export class MovieService {
 
     private httpClient: HttpClient = inject(HttpClient);
 
     private httpOption = {
-        headers:{
+        headers: {
             'Authorization': `Bearer ${environment.token}`
         }
     }
@@ -24,5 +24,11 @@ export class MovieService{
             map(response => response.results)
         );
     }
+
+    getMovieDetails(id: number): Observable<Movie> {
+        const url = `${environment.api}/3/movie/${id}?language=pt-BR`;
+        return this.httpClient.get<Movie>(url, this.httpOption);
+    }
+
 
 }

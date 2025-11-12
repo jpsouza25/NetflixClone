@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="ion-no-shadow transparent-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home" color="white"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="movie-details-content">
+
+  <div class="poster-container">
+    <img
+      class="poster-img"
+      [src]="'https://image.tmdb.org/t/p/original' + movie?.backdrop_path"
+      alt="poster"
+    />
+    <div class="poster-overlay"></div>
+  </div>
+
+  <div class="movie-info">
+    <h1 class="movie-title">{{ movie?.title }}</h1>
+
+    <div class="meta-info">
+      <span>{{ movie?.release_date | date:'yyyy' }}</span>
+      <span *ngIf="movie?.vote_average">⭐ {{ movie?.vote_average | number:'1.1-1' }}</span>
+      <span *ngIf="movie?.original_language">🌐 {{ movie?.original_language | uppercase }}</span>
+    </div>
+
+    <div class="actions">
+      <ion-button color="light" shape="round" fill="solid" class="play-btn">
+        <ion-icon name="play" slot="start"></ion-icon>
+        Assistir
+      </ion-button>
+
+      <ion-button fill="clear" shape="round" class="fav-btn"
+        [class.active]="isFavorite"
+        (click)="toggleFavorite()">
+        <ion-icon
+          [name]="isFavorite ? 'heart' : 'heart-outline'"
+          class="fav-icon"
+        ></ion-icon>
+      </ion-button>
+    </div>
+
+    <p class="overview">{{ movie?.overview }}</p>
+  </div>
+
+</ion-content>

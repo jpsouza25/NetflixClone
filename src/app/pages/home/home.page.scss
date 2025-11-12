@@ -9,6 +9,28 @@
   }
 }
 
+.toolbar-logo {
+  text-align: center;
+}
+
+ion-toolbar {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+}
+
+
+.netflix-logo {
+  height:30px;
+  object-fit: contain;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.3s ease;
+}
+
+.netflix-logo:hover {
+  transform: scale(1.08);
+}
+
+
 .horinzontal-scroll{
   overflow-x: scroll;
   overflow-y: hidden;
@@ -34,3 +56,52 @@
     background:#333;
   }
 }
+
+ion-toolbar {
+  --color: #fff;
+}
+
+.floating-searchbar {
+  position: absolute;
+  top: 56px; 
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 12px;
+}
+
+ion-searchbar {
+  --background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  --color: #fff;
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.floating-results {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  right: 0;
+  margin: 0 12px;
+  background: rgba(25, 25, 25, 0.85);
+  backdrop-filter: blur(16px);
+  border-radius: 12px;
+  z-index: 999;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+ion-item {
+  --background: transparent;
+  --color: #fff;
+}
+
+ion-thumbnail img {
+  border-radius: 8px;
+}
+
+
+

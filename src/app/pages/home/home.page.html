@@ -1,9 +1,28 @@
 <ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar class="ion-no-shadow" [ngStyle]="{'--background': headerBackgroundColor}">
-    <ion-title>
-      Netflix
-    </ion-title>
+    <ion-title><img src="assets/img/netflix.png" alt="Netflix" class="netflix-logo" /></ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleSearch()">
+        <ion-icon [name]="searchActive ? 'close-outline' : 'search-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
+
+  <div *ngIf="searchActive" class="floating-searchbar">
+    <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterMovies()" placeholder="Buscar filmes..." autofocus="true"
+      animated="true"></ion-searchbar>
+    <div *ngIf="searchTerm.length > 0" class="floating-results">
+      <ion-list>
+        <ion-item button *ngFor="let movie of searchResults" (click)="openDetails(movie)">
+          <ion-thumbnail slot="start">
+            <ion-img [src]="'https://image.tmdb.org/t/p/w92' + movie.poster_path"></ion-img>
+          </ion-thumbnail>
+          <ion-label>{{ movie.title }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
 </ion-header>
 
 <ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onScroll($event)"
@@ -11,16 +30,18 @@
   <ion-refresher slot="fixed" (ionRefresh)="getMovies($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+
   <div class="poster-content">
-    <img #posterImage crossorigin="anonymous">
+    <img #posterImage crossorigin="anonymous" />
   </div>
+
   <p class="section-title">Agora em cartaz</p>
+
   <div class="horinzontal-scroll">
     @for (movie of movies; track movie.id) {
-    <ion-card button class="movie-card">
-      <ion-img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}"></ion-img>
+    <ion-card button class="movie-card" (click)="openDetails(movie)">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"></ion-img>
     </ion-card>
     }
-    <!--<p *ngFor="let movie of movies; let i = index">{{ movie.title }}</p> -->
   </div>
 </ion-content>
