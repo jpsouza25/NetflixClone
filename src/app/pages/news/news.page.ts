@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicModule } from "@ionic/angular";
+import { IonTitle, IonHeader, IonToolbar, IonContent } from "@ionic/angular/standalone";
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.page.html',
-  styleUrls: ['./news.page.scss'],
-  imports: [IonicModule],
+    selector: 'app-news',
+    templateUrl: './news.page.html',
+    styleUrls: ['./news.page.scss'],
+    imports: [IonTitle, IonHeader, IonToolbar, IonContent],
 })
 export class NewsPage implements OnInit {
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
