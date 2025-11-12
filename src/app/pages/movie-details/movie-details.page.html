@@ -8,7 +8,6 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="movie-details-content">
-
   <div class="poster-container">
     <img
       class="poster-img"
@@ -22,8 +21,13 @@
     <h1 class="movie-title">{{ movie?.title }}</h1>
 
     <div class="meta-info">
-      <span>{{ movie?.release_date | date:'yyyy' }}</span>
-      <span *ngIf="movie?.vote_average">⭐ {{ movie?.vote_average | number:'1.1-1' }}</span>
+      <span>{{ movie?.release_date | date: 'yyyy' }}</span>
+       <span *ngIf="movie?.vote_average">
+        ⭐
+        <span [style.color]="movie?.vote_average | ratingColor">
+          {{ movie?.vote_average | number: '1.1-1' }}
+        </span>
+      </span>
       <span *ngIf="movie?.original_language">🌐 {{ movie?.original_language | uppercase }}</span>
     </div>
 
@@ -33,17 +37,11 @@
         Assistir
       </ion-button>
 
-      <ion-button fill="clear" shape="round" class="fav-btn"
-        [class.active]="isFavorite"
-        (click)="toggleFavorite()">
-        <ion-icon
-          [name]="isFavorite ? 'heart' : 'heart-outline'"
-          class="fav-icon"
-        ></ion-icon>
+      <ion-button fill="clear" shape="round" class="fav-btn" appHeart>
+        <ion-icon name="heart-outline" class="fav-icon"></ion-icon>
       </ion-button>
     </div>
 
     <p class="overview">{{ movie?.overview }}</p>
   </div>
-
 </ion-content>

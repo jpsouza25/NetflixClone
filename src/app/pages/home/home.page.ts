@@ -27,7 +27,7 @@ import { UtilsHelper } from 'src/app/utils/utils.helper';
 import { Router } from '@angular/router';
 import { RefresherCustomEvent } from '@ionic/angular';
 import { addIcons } from 'ionicons';
-import { closeOutline, searchOutline  } from 'ionicons/icons'
+import { closeOutline, searchOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-home',
@@ -61,7 +61,9 @@ export class HomePage implements AfterViewInit {
   @ViewChild('posterImage') posterImage!: ElementRef<HTMLImageElement>;
 
   movies: Movie[] = [];
+  topRated: Movie[] = [];
   highlightMovie?: Movie;
+
   searchActive = false;
   searchTerm = '';
   searchResults: Movie[] = [];
@@ -79,8 +81,8 @@ export class HomePage implements AfterViewInit {
   constructor() {
     addIcons({
       searchOutline,
-      closeOutline
-    })
+      closeOutline,
+    });
   }
 
   ngAfterViewInit(): void {
@@ -93,10 +95,10 @@ export class HomePage implements AfterViewInit {
 
     this.movieService.getMovies().subscribe((data: Movie[]) => {
       this.movies = data;
-
       const randomIndex = Math.floor(Math.random() * this.movies.length);
       this.highlightMovie = this.movies[randomIndex];
       this.initializeImage();
+      this.topRated = [...this.movies].sort((a, b) => b.vote_average - a.vote_average);
 
       refresher?.target.complete();
       loading.dismiss();

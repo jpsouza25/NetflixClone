@@ -9,3 +9,7 @@
 	--ion-color-primary-shade: #e0e0e0;
 	--ion-color-primary-tint: #ffffff;
 }
+
+ion-page[aria-hidden="true"] {
+  pointer-events: none;
+}
