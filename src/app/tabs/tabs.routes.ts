@@ -13,18 +13,6 @@ export const routes: Routes = [
         loadComponent: () => import('../pages/home/home.page').then(m => m.HomePage)
       },
       {
-        path: 'games',
-        loadComponent: () => import('../pages/games/games.page').then(m => m.GamesPage)
-      },
-      {
-        path: 'news',
-        loadComponent: () => import('../pages/news/news.page').then(m => m.NewsPage)
-      },
-      {
-        path: 'profile',
-        loadComponent: () => import('../pages/profile/profile.page').then(m => m.ProfilePage)
-      },
-      {
         path: 'movie-details/:id',
         loadComponent: () => import('../pages/movie-details/movie-details.page').then(m => m.MovieDetailsPage)
       }
