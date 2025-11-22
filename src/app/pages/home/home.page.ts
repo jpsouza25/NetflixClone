@@ -52,8 +52,6 @@ import { closeOutline, searchOutline } from 'ionicons/icons';
     IonLabel,
     IonThumbnail,
     NgStyle,
-    NgIf,
-    NgForOf,
     FormsModule,
   ],
 })

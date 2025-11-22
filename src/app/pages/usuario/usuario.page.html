@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Meu Perfil</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="profile-container">
+
+    <div class="info-box">
+      <p><strong>Nome:</strong> {{ usuario?.createdAt }}</p>
+      <p><strong>Email:</strong> {{ usuario?.id }}</p>
+    </div>
+
+  </div>
+
+</ion-content>
